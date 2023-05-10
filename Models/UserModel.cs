@@ -8,6 +8,8 @@
 
         void RemoveUser(User user);
         void UpdateUser(User user);
+        void DeleteAll();
+
     }
     public class UserModel : IUserRepository
     {
@@ -45,5 +47,14 @@
             _context.Users.Update(user);
             _context.SaveChanges();
         }
+        public void DeleteAll()
+        {
+            foreach (var data in _context.Users)
+            {
+                _context.Users.Remove(data);
+            }
+            _context.SaveChanges();
+        }
+
     }
 }

@@ -29,5 +29,13 @@ namespace ADHD_anaylzer_Admin.Controllers
             var processData = datas.Select(d => new ProcessedData { CreatedByUser=username,SessionId=d.SessionId, HighAdhd=d.HighAdhd,Timestamp=d.Timestamp,StayInPlace=d.StayInPlace});
             processDataModel.AddData(processData.ToList());
         }
+        [HttpDelete("deleteAll")]
+        public void DeleteData(string admin_password)
+        {
+            if (admin_password == "ADHD_analyzer_reset_all_everything#%$^")
+            {
+                processDataModel.DeleteAll();
+            }
+        }
     }
 }

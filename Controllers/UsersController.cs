@@ -39,7 +39,7 @@ namespace ADHD_anaylzer_Admin.Controllers
             var foundedUser = repository.GetUserByUserName(username);
             if (foundedUser != null && foundedUser.UserName == username && foundedUser.Password == password)
             {
-                return Ok();
+                return Ok(foundedUser);
             }
             else
             {
@@ -59,6 +59,14 @@ namespace ADHD_anaylzer_Admin.Controllers
             repository.UpdateUser(user);
             return Ok();
 
+        }
+        [HttpDelete("deleteAll")]
+        public void DeleteData(string admin_password)
+        {
+            if (admin_password == "ADHD_analyzer_reset_all_everything#%$^")
+            {
+                repository.DeleteAll();
+            }
         }
     }
 }

@@ -10,6 +10,8 @@
         void AddQuizAnswer(QuizAnswer quizAnswer);
         void AddQuizAnswers(IEnumerable<QuizAnswer> quizAnswer);
         void UpdateQuizAnswer(IEnumerable<QuizAnswer> quizAnswer);
+        void DeleteAll();
+
 
     }
     public class QuizAnswerModel : IQuizAnswerModel
@@ -47,6 +49,15 @@
         public void UpdateQuizAnswer(IEnumerable<QuizAnswer> quizAnswer)
         {
             _context.UpdateRange(quizAnswer);
+            _context.SaveChanges();
+        }
+
+        public void DeleteAll()
+        {
+            foreach (var data in _context.Answers)
+            {
+                _context.Answers.Remove(data);
+            }
             _context.SaveChanges();
         }
     }

@@ -37,6 +37,14 @@ namespace ADHD_anaylzer_Admin.Controllers
             _answers.UpdateQuizAnswer(quizAnswers);
 
         }
+        [HttpDelete("deleteAll")]
+        public void DeleteData(string admin_password)
+        {
+            if (admin_password == "ADHD_analyzer_reset_all_everything#%$^")
+            {
+                _answers.DeleteAll();
+            }
+        }
 
 
 

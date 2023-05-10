@@ -6,6 +6,7 @@
         void AddData(ICollection<ProcessedData> datas);
 
         ICollection<int> GetAvilableSessionForUser(string username);
+        void DeleteAll();
     }
     public class ProcessDataModel : IProcessDataModel
     {
@@ -30,5 +31,13 @@
             return _context.Datas.Where(e => e.CreatedByUser == username).Select(d => d.SessionId).Distinct().ToList();
         }
 
+        public void DeleteAll()
+        {
+            foreach (var data in _context.Datas)
+            {
+                _context.Datas.Remove(data);
+            }
+            _context.SaveChanges();
+        }
     }
 }
