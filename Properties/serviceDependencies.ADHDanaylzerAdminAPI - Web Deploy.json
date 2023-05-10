@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/adhd-anaylzer-admindbserver/databases/ADHD_anaylzer_Admin_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:adhd_analyzer_azure"
+    }
+  }
+}
