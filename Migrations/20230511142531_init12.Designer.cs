@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADHD_anaylzer_Admin.Migrations
 {
     [DbContext(typeof(myDBContext))]
-    [Migration("20230509082337_Initial")]
-    partial class Initial
+    [Migration("20230511142531_init12")]
+    partial class init12
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace ADHD_anaylzer_Admin.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("CreatedByUser")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("HighAdhd")
                         .HasColumnType("bit");
@@ -41,7 +41,7 @@ namespace ADHD_anaylzer_Admin.Migrations
                     b.Property<bool>("StayInPlace")
                         .HasColumnType("bit");
 
-                    b.HasKey("SessionId", "Timestamp");
+                    b.HasKey("SessionId", "Timestamp", "CreatedByUser");
 
                     b.ToTable("processedData");
                 });

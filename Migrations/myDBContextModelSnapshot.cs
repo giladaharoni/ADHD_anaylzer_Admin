@@ -30,7 +30,7 @@ namespace ADHD_anaylzer_Admin.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("CreatedByUser")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("HighAdhd")
                         .HasColumnType("bit");
@@ -38,7 +38,7 @@ namespace ADHD_anaylzer_Admin.Migrations
                     b.Property<bool>("StayInPlace")
                         .HasColumnType("bit");
 
-                    b.HasKey("SessionId", "Timestamp");
+                    b.HasKey("SessionId", "Timestamp", "CreatedByUser");
 
                     b.ToTable("processedData");
                 });

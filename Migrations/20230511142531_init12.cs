@@ -5,7 +5,7 @@
 namespace ADHD_anaylzer_Admin.Migrations
 {
     /// <inheritdoc />
-    public partial class init7 : Migration
+    public partial class init12 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,15 +27,15 @@ namespace ADHD_anaylzer_Admin.Migrations
                 name: "processedData",
                 columns: table => new
                 {
+                    CreatedByUser = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SessionId = table.Column<int>(type: "int", nullable: false),
                     Timestamp = table.Column<long>(type: "bigint", nullable: false),
-                    CreatedByUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StayInPlace = table.Column<bool>(type: "bit", nullable: false),
                     HighAdhd = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_processedData", x => new { x.SessionId, x.Timestamp });
+                    table.PrimaryKey("PK_processedData", x => new { x.SessionId, x.Timestamp, x.CreatedByUser });
                 });
 
             migrationBuilder.CreateTable(

@@ -18,7 +18,7 @@ namespace ADHD_anaylzer_Admin.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasKey(e => e.UserName);
-            modelBuilder.Entity<ProcessedData>().HasKey(e => new { e.SessionId, e.Timestamp });
+            modelBuilder.Entity<ProcessedData>().HasKey(e => new { e.SessionId, e.Timestamp, e.CreatedByUser });
             modelBuilder.Entity<QuizAnswer>().HasKey(e => new {e.AnswerByUserName,e.QuestionNumber});
         }
     }
