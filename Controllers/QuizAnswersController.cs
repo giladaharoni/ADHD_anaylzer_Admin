@@ -26,7 +26,15 @@ namespace ADHD_anaylzer_Admin.Controllers
         public void UploadAnswers(string username, IEnumerable<GivenAnswer> answers)
         {
             var quizAnswers = answers.Select(x => new QuizAnswer { Answer = x.Answer, QuestionNumber = x.QuestionNumber, AnswerByUserName = username });
-            _answers.AddQuizAnswers(quizAnswers);
+            try
+            {
+                _answers.UpdateQuizAnswer(quizAnswers);
+
+            } catch (Exception ex)
+            {
+                _answers.AddQuizAnswers(quizAnswers);
+
+            }
 
         }
 
