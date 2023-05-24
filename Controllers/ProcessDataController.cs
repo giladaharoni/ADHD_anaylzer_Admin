@@ -13,10 +13,17 @@ namespace ADHD_anaylzer_Admin.Controllers
         {
             this.processDataModel = processDataModel;
         }
-        [HttpGet]
-        public IActionResult getDataBySessionAndUser(string username, int session)
+        [HttpGet("lastSession")]
+        public IActionResult getDataBySessionAndUser(string username)
         {
-            return Ok(processDataModel.GetDataBySessionAndUser(username, session));
+            var sessions = processDataModel.GetAvilableSessionForUser(username);
+            int last_session = sessions.Max();
+            return Ok(processDataModel.GetDataBySessionAndUser(username, last_session));
+        }
+        [HttpGet]
+        public IActionResult getLatSessionByUser(string username)
+        {
+            return Ok();
         }
         [HttpGet("session")]
         public IActionResult getAvilabeSessions(string username)
